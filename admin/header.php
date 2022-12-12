@@ -28,7 +28,7 @@
                 </div>
                 <div class="right-panel">
                     <img height="24" src="../image//icon//iconhome.png" />
-                    <a href="../index.php">Trang chủ</a>
+                    <a href="../home.php">Trang chủ</a>
                     <img height="26" src="../image/icon//logout.png" />
 
                     <a href="logout.php">Đăng xuất</a>

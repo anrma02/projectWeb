@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
- 
+
 <html>
 
 <head>
@@ -63,7 +63,7 @@
     //        $product['images'] = mysqli_fetch_all($imgLibrary, MYSQLI_ASSOC);
     ?>
     <div class="container">
-        <a href="index.php">Trang chủ</a>
+        <a href="home.php">Trang chủ</a>
         <h1>Giỏ hàng</h1>
         <form id="cart-form" action="cart.php?action=submit" method="POST">
             <table>
@@ -84,9 +84,9 @@
                         <td class="product-number"><?= $num++; ?></td>
                         <td class="product-name"><?= $row['name'] ?></td>
                         <td class="product-img"><img src="<?= $row['image'] ?>" /></td>
-                        <td class="product-price"><?= $row['price'] ?></td>
+                        <td class="product-price"><?= number_format($row['price'], 0, ",", ".") ?></td>
                         <td class="product-quantity"><input type="text" value="<?= $_SESSION["cart"][$row['id']] ?>" name="quantity[<?= $row['id'] ?>]" /></td>
-                        <td class="total-money"><?= $row['price'] ?></td>
+                        <td class="total-money"><?= number_format($row['price'], 0, ",", ".") ?></td>
                         <td class="product-delete"><a href="cart.php?action=delete&id=<?= $row['id'] ?>">Xóa</a></td>
                     </tr>
                 <?php
@@ -107,9 +107,9 @@
                 <input type="submit" name="update_click" value="Cập nhật" />
             </div>
             <hr>
-            <div><label>Người nhận: </label><input type="text" value="" name="name" /></div>
-            <div><label>Điện thoại: </label><input type="text" value="" name="phone" /></div>
-            <div><label>Địa chỉ: </label><input type="text" value="" name="address" /></div>
+            <div><label>Người nhận: </label><input type="text" value="" name="name" required /></div>
+            <div><label>Điện thoại: </label><input type="text" value="" name="phone" required /></div>
+            <div><label>Địa chỉ: </label><input type="text" value="" name="address" required /></div>
             <div><label>Ghi chú: </label><textarea name="note" cols="50" rows="7"></textarea></div>
             <input type="submit" name="order_click" value="Đặt hàng" />
         </form>
