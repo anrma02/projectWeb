@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 if (!empty($_SESSION['current_user'])) {
-    ?>
+?>
     <div class="main-content">
         <h1>Xóa sản phẩm</h1>
         <div id="content-box">
@@ -15,22 +15,20 @@ if (!empty($_SESSION['current_user'])) {
                 }
                 mysqli_close($con);
                 if ($error !== false) {
-                    ?>
+            ?>
                     <div id="error-notify" class="box-content">
                         <h2>Thông báo</h2>
                         <h4><?= $error ?></h4>
                         <a href="./product_listing.php">Danh sách sản phẩm</a>
                     </div>
-        <?php } else { ?>
+                <?php } else { ?>
                     <div id="success-notify" class="box-content">
                         <h2>Xóa sản phẩm thành công</h2>
                         <a href="./product_listing.php">Danh sách sản phẩm</a>
                     </div>
                 <?php } ?>
-    <?php } ?>
+            <?php } ?>
         </div>
     </div>
-    <?php
+<?php
 }
-include 'footer.php';
-?>

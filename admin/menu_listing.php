@@ -44,7 +44,7 @@ if (!empty($_SESSION['current_user'])) {
         $menuTree = createMenuTree($menuList, 0); //Lấy các Menu con của Parent ID = 0;
     }
     mysqli_close($con);
-    ?>
+?>
     <div class="main-content">
         <h1>Danh sách <?= $config_title ?></h1>
         <div class="listing-items">
@@ -55,14 +55,16 @@ if (!empty($_SESSION['current_user'])) {
                 <form id="<?= $config_name ?>-search-form" action="<?= $config_name ?>_listing.php?action=search" method="POST">
                     <fieldset>
                         <legend>Tìm kiếm <?= $config_title ?>:</legend>
-                        Tên <?= $config_title ?>: <input type="text" name="name" value="<?= !empty($name) ? $name : "" ?>" />
-                        <input type="submit" value="Tìm" />
+                        Tên <?= $config_title ?>: <input type="text" class="search" name="name" value="<?= !empty($name) ? $name : "" ?>" />
+                        <!-- <input type="submit" value="Tìm" /> -->
+                        <button class="iconsearch "> <i class="fa-solid fa-magnifying-glass"></i></button>
                     </fieldset>
                 </form>
             </div>
             <ul id="<?= $config_name ?>-list">
                 <li class="listing-item-heading">
-                    <div class="listing-prop listing-name"  style="width:301px;">Tên <?= $config_title ?></div>
+                    <div class="listing-prop listing-name" style="width: 423px;
+}">Tên <?= $config_title ?></div>
                     <div class="listing-prop listing-button">
                         Xóa
                     </div>
@@ -85,7 +87,5 @@ if (!empty($_SESSION['current_user'])) {
             <div class="clear-both"></div>
         </div>
     </div>
-    <?php
+<?php
 }
-include './footer.php';
-?>

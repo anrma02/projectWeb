@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 if (!empty($_SESSION['current_user'])) {
-    ?>
+?>
     <div class="main-content">
         <h1><?= !empty($_GET['id']) ? ((!empty($_GET['task']) && $_GET['task'] == "copy") ? "Copy sản phẩm" : "Sửa sản phẩm") : "Thêm sản phẩm" ?></h1>
         <div id="content-box">
@@ -66,12 +66,12 @@ if (!empty($_SESSION['current_user'])) {
                 } else {
                     $error = "Bạn chưa nhập thông tin sản phẩm.";
                 }
-                ?>
-                <div class = "container">
-                    <div class = "error"><?= isset($error) ? $error : "Cập nhật thành công" ?></div>
-                    <a href = "product_listing.php">Quay lại danh sách sản phẩm</a>
+            ?>
+                <div class="container">
+                    <div class="error"><?= isset($error) ? $error : "Cập nhật thành công" ?></div>
+                    <a href="product_listing.php">Quay lại danh sách sản phẩm</a>
                 </div>
-                <?php
+            <?php
             } else {
                 if (!empty($_GET['id'])) {
                     $result = mysqli_query($con, "SELECT * FROM `product` WHERE `id` = " . $_GET['id']);
@@ -86,9 +86,10 @@ if (!empty($_SESSION['current_user'])) {
                         }
                     }
                 }
-                ?>
-                <form id="editing-form" method="POST" action="<?= (!empty($product) && !isset($_GET['task'])) ? "?action=edit&id=" . $_GET['id'] : "?action=add" ?>"  enctype="multipart/form-data">
-                    <input type="submit" title="Lưu sản phẩm" value="" />
+            ?>
+                <form id="editing-form" method="POST" action="<?= (!empty($product) && !isset($_GET['task'])) ? "?action=edit&id=" . $_GET['id'] : "?action=add" ?>" enctype="multipart/form-data">
+                    <!-- <input type="submit" title="Lưu sản phẩm" value="" /> -->
+                    <button class="btn"><i class="icon fa-solid fa-floppy-disk"></i></button>
                     <div class="clear-both"></div>
                     <div class="wrap-field">
                         <label>Tên sản phẩm: </label>
@@ -103,10 +104,10 @@ if (!empty($_SESSION['current_user'])) {
                     <div class="wrap-field">
                         <label>Ảnh đại diện: </label>
                         <div class="right-wrap-field">
-        <?php if (!empty($product['image'])) { ?>
-                                <img src="../<?= $product['image'] ?>" /><br/>
+                            <?php if (!empty($product['image'])) { ?>
+                                <img src="../<?= $product['image'] ?>" /><br />
                                 <input type="hidden" name="image" value="<?= $product['image'] ?>" />
-        <?php } ?>
+                            <?php } ?>
                             <input type="file" name="image" />
                         </div>
                         <div class="clear-both"></div>
@@ -114,21 +115,21 @@ if (!empty($_SESSION['current_user'])) {
                     <div class="wrap-field">
                         <label>Thư viện ảnh: </label>
                         <div class="right-wrap-field">
-                                <?php if (!empty($product['gallery'])) { ?>
+                            <?php if (!empty($product['gallery'])) { ?>
                                 <ul>
-            <?php foreach ($product['gallery'] as $image) { ?>
+                                    <?php foreach ($product['gallery'] as $image) { ?>
                                         <li>
                                             <img src="../<?= $image['path'] ?>" />
                                             <a href="gallery_delete?id=<?= $image['id'] ?>">Xóa</a>
                                         </li>
-                                <?php } ?>
+                                    <?php } ?>
                                 </ul>
                             <?php } ?>
                             <?php if (isset($_GET['task']) && !empty($product['gallery'])) { ?>
                                 <?php foreach ($product['gallery'] as $image) { ?>
                                     <input type="hidden" name="gallery_image[]" value="<?= $image['path'] ?>" />
                                 <?php } ?>
-        <?php } ?>
+                            <?php } ?>
                             <input multiple="" type="file" name="gallery[]" />
                         </div>
                         <div class="clear-both"></div>
@@ -140,16 +141,11 @@ if (!empty($_SESSION['current_user'])) {
                     </div>
                 </form>
                 <div class="clear-both"></div>
-                <script>
-                    // Replace the <textarea id="editor1"> with a CKEditor
-                    // instance, using default configuration.
-                    CKEDITOR.replace('product-content');
-                </script>
-    <?php } ?>
+
+
+            <?php } ?>
         </div>
     </div>
 
-    <?php
+<?php
 }
-include './footer.php';
-?>
