@@ -46,7 +46,7 @@ if (!empty($_SESSION['current_user'])) {
 
                 <div class="total-items">
                     <?php /*
-                  <span>Có tất cả <strong><?=$totalRecords?></strong> <?=$config_title?> trên <strong><?=$totalPages?></strong> trang</span> */ ?>
+                <span>Có tất cả <strong><?=$totalRecords?></strong> <?=$config_title?> trên <strong><?=$totalPages?></strong> trang</span> */ ?>
                 </div>
                 <ul>
                     <li class="listing-item-heading">

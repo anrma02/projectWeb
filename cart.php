@@ -1,10 +1,14 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
 
 <head>
-    <title>Mua sản phẩm</title>
+    <title>Bài 22: Hướng dẫn xây dựng chức năng giỏ hàng PHP - Phần 3</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -51,18 +55,30 @@
                     update_cart();
                     header('Location: ./cart.php');
                 } elseif ($_POST['order_click']) { //Đặt hàng sản phẩm
+
                     if (empty($_POST['name'])) {
-                        $error =  header("Location:cart.php?error=Vui lòng nhập tên của người nhận");
-                        // exit();
+                        $error = "Bạn chưa nhập tên của người nhận";
                     } elseif (empty($_POST['phone'])) {
-                        // $error = "";
-                        $error =  header("Location:cart.php?error=Vui lòng nhập số điện thoại người nhận");
-                        // exit();
+                        $error = "Bạn chưa nhập số điện thoại người nhận";
                     } elseif (empty($_POST['address'])) {
-                        // $error = "Bạn chưa nhập địa chỉ người nhận";
-                        $error = header("Location:cart.php?error=Vui lòng nhập địa chỉ người nhận");
-                        // exit();
+                        $error = "Bạn chưa nhập địa chỉ người nhận";
+                    } elseif (empty($_POST['quantity'])) {
+                        $error = "Giỏ hàng rỗng";
                     }
+                    // if (empty($_POST['name'])) {
+                    //     $error =  header("Location:cart.php?error=Vui lòng nhập tên của người nhận");
+                    //     // exit();
+                    // } elseif (empty($_POST['phone'])) {
+                    //     // $error = "";
+                    //     $error =  header("Location:cart.php?error=Vui lòng nhập số điện thoại người nhận");
+                    //     // exit();
+                    // } elseif (empty($_POST['address'])) {
+                    //     // $error = "Bạn chưa nhập địa chỉ người nhận";
+                    //     $error = header("Location:cart.php?error=Vui lòng nhập địa chỉ người nhận");
+                    //     // exit();
+                    // } elseif (empty($_POST['quantity'])) {
+                    //     $error =header("Location:cart.php?error=Giỏ hàng rỗng");
+                    // }
                     if ($error == false && !empty($_POST['quantity'])) { //Xử lý lưu giỏ hàng vào db
                         $products = mysqli_query($con, "SELECT * FROM `product` WHERE `id` IN (" . implode(",", array_keys($_POST['quantity'])) . ")");
                         $total = 0;
@@ -71,7 +87,7 @@
                             $orderProducts[] = $row;
                             $total += $row['price'] * $_POST['quantity'][$row['id']];
                         }
-                        $insertOrder = mysqli_query($con, "INSERT INTO `order` (`id`, `name`, `phone`, `address`, `note`, `total`, `created_time`, `last_updated`) VALUES (NULL, '" . $_POST['name'] . "', '" . $_POST['phone'] . "', '" . $_POST['address'] . "', '" . $_POST['note'] . "', '" . $total . "', '" . time() . "', '" . time() . "');");
+                        $insertOrder = mysqli_query($con, "INSERT INTO `orders` (`id`, `name`, `phone`, `address`, `note`, `total`, `created_time`, `last_updated`) VALUES (NULL, '" . $_POST['name'] . "', '" . $_POST['phone'] . "', '" . $_POST['address'] . "', '" . $_POST['note'] . "', '" . $total . "', '" . time() . "', '" . time() . "');");
                         $orderID = $con->insert_id;
                         $insertString = "";
                         foreach ($orderProducts as $key => $product) {
@@ -81,7 +97,7 @@
                             }
                         }
                         $insertOrder = mysqli_query($con, "INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`, `price`, `created_time`, `last_updated`) VALUES " . $insertString . ";");
-                        $success = header("Location:cart.php?success=Đặt hàng thành công");
+                        $success = "Đặt hàng thành công";
                         unset($_SESSION['cart']);
                     }
                 }
@@ -103,7 +119,7 @@
             </div>
         <?php } elseif (!empty($success)) { ?>
             <div id="notify-msg">
-                <?= $success ?>. <a href="index.php">Tiếp tục mua hàng</a>
+                <?= $success ?>. <a href="home.php">Tiếp tục mua hàng</a>
             </div>
         <?php } else { ?>
             <a href="home.php">Trang chủ</a>
@@ -151,33 +167,32 @@
                     <?php
                     }
                     ?>
-
-                    <style>
-                        .error {
-                            background: #f2dede;
-                            color: #a94442;
-                            border-radius: 5px;
-                            width: 90%;
-                            text-align: center;
-                            padding: 5px;
-                            /* margin: 20px auto; */
-                        }
-
-                        .success {
-                            background: #d4edda;
-                            color: #40754c;
-                            border-radius: 5px;
-                            margin-left: 55px;
-                            width: 70%;
-                            padding: 10px;
-                            /* margin: 20px auto; */
-                        }
-                    </style>
                 </table>
                 <div id="form-button">
                     <input type="submit" name="update_click" value="Cập nhật" />
                 </div>
                 <hr>
+                <style>
+                    .error {
+                        background: #f2dede;
+                        color: #a94442;
+                        border-radius: 5px;
+                        width: 90%;
+                        text-align: center;
+                        padding: 5px;
+                        /* margin: 20px auto; */
+                    }
+
+                    .success {
+                        background: #d4edda;
+                        color: #40754c;
+                        border-radius: 5px;
+                        margin-left: 55px;
+                        width: 70%;
+                        padding: 10px;
+                        /* margin: 20px auto; */
+                    }
+                </style>
                 <?php if (isset($_GET['error'])) {
                 ?>
                     <p class="error"> <?php echo $_GET['error']; ?> </p>
@@ -186,7 +201,6 @@
                 <?php if (isset($_GET['success'])) { ?>
                     <p class="success"><?php echo $_GET['success']; ?></p>
                 <?php } ?>
-
                 <div><label>Người nhận: </label><input type="text" value="" name="name" /></div>
                 <div><label>Điện thoại: </label><input type="text" value="" name="phone" /></div>
                 <div><label>Địa chỉ: </label><input type="text" value="" name="address" /></div>
