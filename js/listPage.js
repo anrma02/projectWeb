@@ -1,4 +1,4 @@
-let thisPage = 1;
+let thisPage = 2;
 let limit = 20;
 let list = document.querySelectorAll(".list .item");
 
@@ -15,14 +15,13 @@ function loadItem() {
   listPage();
 }
 loadItem();
-
 function listPage() {
   let count = Math.ceil(list.length / limit);
   document.querySelector(".listPage").innerHTML = "";
 
   if (thisPage != 1) {
     let prev = document.createElement("li");
-    prev.innerText = "<";
+    prev.innerText = "PREV";
     prev.setAttribute("onclick", "changePage(" + (thisPage - 1) + ")");
     document.querySelector(".listPage").appendChild(prev);
   }
@@ -39,12 +38,11 @@ function listPage() {
 
   if (thisPage != count) {
     let next = document.createElement("li");
-    next.innerText = " > ";
+    next.innerText = "NEXT";
     next.setAttribute("onclick", "changePage(" + (thisPage + 1) + ")");
     document.querySelector(".listPage").appendChild(next);
   }
 }
-
 function changePage(i) {
   thisPage = i;
   loadItem();
