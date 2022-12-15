@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 
 <body>
@@ -23,7 +24,7 @@
             <h2>Chi tiết sản phẩm</h2>
             <div id="product-detail">
                 <div id="product-img">
-                    <img src="<?= $product['image'] ?>" />
+                    <img class="img-cover" src="<?= $product['image'] ?>" />
                 </div>
                 <div id="product-info">
                     <h1><?= $product['name'] ?></h1>
@@ -37,7 +38,7 @@
                         <div id="gallery">
                             <ul>
                                 <?php foreach ($product['images'] as $img) { ?>
-                                    <li><img src="<?= $img['path'] ?>" /></li>
+                                    <li><img class="img-cover" src="<?= $img['path'] ?>" /></li>
                                 <?php } ?>
                             </ul>
                         </div>

@@ -36,6 +36,7 @@ function listPage() {
     newPage.setAttribute("onclick", "changePage(" + i + ")");
     document.querySelector(".listPage").appendChild(newPage);
   }
+
   if (thisPage != count) {
     let next = document.createElement("li");
     next.innerText = " > ";
@@ -43,6 +44,7 @@ function listPage() {
     document.querySelector(".listPage").appendChild(next);
   }
 }
+
 function changePage(i) {
   thisPage = i;
   loadItem();

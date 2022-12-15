@@ -9,6 +9,15 @@ body {
 
   background-color: rgb(239, 239, 239);
 }
+.logo {
+  margin-right: -105px;
+}
+.logo a img {
+  height: 110px;
+  width: 150px;
+  transform: translate(-55px, 0px);
+}
+
 .na {
   background-color: #1ab1e4;
   transform: translate(13px, -75px);
