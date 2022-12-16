@@ -32,17 +32,19 @@
 
                </div>
           </ul>
-
-          <ul>
-               <li class="menu"> <img src="./image//avt.jpg">
-                    <div class="menu-child">
-                         <ul>
-                              <li> <a href="./admin/logout.php">Đăng xuất</a> </li>
-                              <li><a href="./admin/edit.php">Đổi mật khẩu</a></li>
-                         </ul>
-                    </div>
-               </li>
-               </li> <a href="./cart.php"><i class=" icon fa-solid fa-cart-shopping"> </i></a>
+          <div class="heade">
+               <ul>
+                    <li class="menu"> <img src="./image//avt.jpg">
+                         <div class="menu-child">
+                              <ul>
+                                   <li> <a href="./admin/logout.php">Đăng xuất</a> </li>
+                                   <li><a href="./admin/edit.php">Đổi mật khẩu</a></li>
+                              </ul>
+                         </div>
+                    </li>
+                    </li> <a href="./cart.php"><i class=" icon fa-solid fa-cart-shopping"> </i></a>
+               </ul>
+          </div>
      </div>
 </body>
 

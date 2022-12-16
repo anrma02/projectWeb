@@ -5,7 +5,9 @@ body {
   font-size: 14px;
 }
 .container {
-  width: 1200px;
+  width: 1190px;
+  position: relative;
+  height: 50px;
   margin: 0px 100px;
 }
 h1 {
@@ -109,9 +111,11 @@ a:hover {
   /* text-decoration: underline; */
 }
 #admin-heading-panel {
-  background: #0374c5;
-  height: 50px;
+  background: #287eef;
+
+  height: 100px;
   line-height: 50px;
+  margin-bottom: 50px;
   color: #fff;
 }
 #admin-heading-panel a {
@@ -138,9 +142,10 @@ a:hover {
   width: 280px;
 }
 .main-content {
+  position: absolute;
+  left: 18%;
   float: left;
   width: 900px;
-  margin-left: 20px;
 }
 .main-content h1 {
   width: 1000px;
@@ -172,27 +177,20 @@ a:hover {
   border-radius: 10px 10px 0 0;
   font-size: 18px;
 }
+.menu-items {
+  transform: translate(225px, 50px);
+}
 .menu-items ul {
   margin: 0;
   padding: 0;
 }
 .menu-items ul li {
   list-style: none;
-  line-height: 30px;
-  border-bottom: 1px dashed #ccc;
-  padding-left: 15px;
+  display: flex;
+  padding: 0 30px;
+  /* margin-left: 10px; */
 }
-.menu-items ul li a {
-  color: #000;
-}
-.menu-items ul li:first-child {
-  border-top: 0;
-}
-.menu-items {
-  padding: 0 0px 15px 0px;
-  border: 1px solid #ccc;
-  border-radius: 0 0 10px 10px;
-}
+
 #page {
   /* transform: translate(30px, 30px); */
   text-align: center;
@@ -300,11 +298,6 @@ a:hover {
 }
 
 .box-content {
-  margin: 0 auto;
-  width: 800px;
-  border: 1px solid #ccc;
-  text-align: center;
-  padding: 20px;
 }
 .listing-search {
   margin-bottom: 30px;
@@ -368,4 +361,8 @@ select[name="parent_id"] {
 }
 #order-detail label {
   font-weight: bold;
+}
+
+.ul {
+  display: flex;
 }

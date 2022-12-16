@@ -1,6 +1,6 @@
 <div id="page">
 	<?php
-	if ($current_page > 3) {
+	if ($current_page > 5) {
 		$first_page = 1; ?>
 		<a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $first_page ?>">First</a>
 	<?php }
@@ -10,7 +10,7 @@
 	<?php }
 	for ($num = 1; $num <= $totalPages; $num++) { ?>
 		<?php if ($num != $current_page) { ?>
-			<?php if ($num >  $current_page - 3 && $num < $current_page + 3) { ?>
+			<?php if ($num >  $current_page - 5 && $num < $current_page + 5) { ?>
 				<a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $num ?>"><?= $num ?></a>
 			<?php } ?>
 		<?php } else { ?>
@@ -21,7 +21,7 @@
 		$next_page = $current_page + 1; ?>
 		<a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $next_page ?>">Next</a>
 	<?php }
-	if ($current_page < $totalPages - 3) {
+	if ($current_page < $totalPages - 5) {
 		$end_page = $totalPages; ?>
 		<a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $end_page ?>">Last</a>
 	<?php

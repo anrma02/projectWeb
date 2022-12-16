@@ -1,0 +1,24 @@
+.menu-child {
+}
+
+.avatar-user {
+  position: relative;
+}
+
+.menu-child::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -23px;
+  bottom: 0;
+  right: 0px;
+  left: 10px;
+  /* background-color: red; */
+  height: 37px;
+  width: 100px;
+}
+
+.avatar-user {
+  width: 100px;
+  height: 100px;
+}

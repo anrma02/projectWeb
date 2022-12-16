@@ -28,7 +28,7 @@
         // $usern = validata($_POST['username']);
         // $password = validata($_POST['password']);
 
-        $result = mysqli_query($con, "Select `id`,`username`,`fullname`,`birthday` from `user` WHERE (`username` ='" . $_POST['username'] . "' AND `password` = ('" . $_POST['password'] . "'))");
+        $result = mysqli_query($con, "Select `id`,`username`,`fullname` from `user` WHERE (`username` ='" . $_POST['username'] . "' AND `password` = ('" . $_POST['password'] . "'))");
 
         // $sql = 'SELECT*FROM `user` WHERE `username`=$user AND `password`= $password';
         // $result = mysqli_query($con, $sql);
@@ -88,9 +88,43 @@
         $currentUser = $_SESSION['current_user'];
 
     ?>
+        <style>
+            .box-container {
+                transform: translate(479px, 41px);
+                padding: 10px;
+                width: 500px;
+                display: grid;
+                margin: 1;
+                height: 350px;
+                border: 1px solid black;
+                justify-content: center;
+            }
+
+            p {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .clo {
+                background: #4395e0;
+                width: 200px;
+                height: 40px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 15px;
+            }
+
+            .clo:hover {
+                background: #1f71bd;
+            }
+        </style>
+
         <div class="box-container">
-            <div> Xin chào: <?= $currentUser['fullname'] ?> </div>
+            <p>Xin chào: <?= $currentUser['fullname'] ?> </p>
             <div class="clo"><a href="./product_listing.php">Quản lý sản phẩm</a><br /></div>
+            <div class="clo"> <a href="../home.php">Trang chủ</a><br /> </div>
             <div class="clo"> <a href="./edit.php">Đổi mật khẩu</a><br /> </div>
             <div class="clo"> <a href="./logout.php">Đăng xuất</a> </div>
         </div>

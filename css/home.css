@@ -183,7 +183,7 @@ input {
   cursor: pointer;
 }
 .search li input[type="text"] {
-  width: 390px;
+  width: 430px;
   transform: translate(-15px, -15px);
   border-radius: 5px;
   border: 1px solid #faf8f1;
@@ -196,14 +196,13 @@ input {
   position: absolute;
   margin: 0;
   border: 0;
-  padding: 1px;
-  transform: translate(-38px, -15px);
-  width: 40px;
+  transform: translate(-38px, -16px);
+  width: 50px;
   color: white;
   outline: 0;
   font-size: 20px;
   background-color: #57bbf9;
-  height: 37px;
+  height: 36px;
   border-radius: 0 5px 5px 0;
 }
 .btn:hover {
@@ -245,7 +244,7 @@ a {
   text-decoration: none;
 }
 .header ul li img {
-  transform: translate(160px, -10px);
+  transform: translate(160px, 5px);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -254,7 +253,7 @@ a {
   cursor: pointer;
   font-size: 35px;
   color: white;
-  transform: translate(10px, -20px);
+  transform: translate(10px, -10px);
 }
 .container {
   max-width: 100%;

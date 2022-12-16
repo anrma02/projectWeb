@@ -33,7 +33,6 @@ WHERE orders.id = " . $_GET['id']);
 
             <h1>Chi tiết đơn hàng</h1>
             <label>Người nhận: </label><span> <?= $orders[0]['name'] ?></span><br />
-
             <label>Điện thoại: </label><span> <?= $orders[0]['phone'] ?></span><br />
             <label>Địa chỉ: </label><span> <?= $orders[0]['address'] ?></span><br />
             <hr />
