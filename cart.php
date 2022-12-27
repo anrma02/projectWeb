@@ -12,7 +12,7 @@
 <body>
     <?php
     include './connect_db.php';
-    if (!isset($_SESSION["cart"])) {
+    if (!isset($_SESSION["cart"])) { //bđ gọi hàm
         $_SESSION["cart"] = array();
     }
     $error = false;
@@ -23,7 +23,7 @@
         {
             foreach ($_POST['quantity'] as $id => $quantity) {
                 if ($quantity == 0) {
-                    unset($_SESSION["cart"][$id]);
+                    unset($_SESSION["cart"][$id]); // loại bỏ một hoặc nhiều biến được truyền vào
                 } else {
                     if ($add) {
                         $_SESSION["cart"][$id] += $quantity;
